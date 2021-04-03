@@ -1,5 +1,6 @@
 FROM tomcat:9.0
 LABEL maintainer=”nikolay.maslianikov@gmail.com”
+RUN apt update && apt install maven -y
 WORKDIR tmp
 RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
 RUN cd boxfuse-sample-java-war-hello && mvn package
