@@ -1,9 +1,10 @@
 
-Usage for build:
-	build -t $YourAppsTagName $DockerfileDirName
-
 Usage for run:
-	docker run -d -p 80:8080 $YourAppsTagName
+	docker-compose up -d
 
 Usage this URL for test:
-	http://$IP/hello-1.0
+	http://$IP/hello-1.0	
+
+
+Usage for destroy:
+	docker-compose down
