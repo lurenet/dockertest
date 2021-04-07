@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+
+  dev:
+    build:
+      context: ./dev
+    volumes:
+      - type: volume
+        source: webdir
+        target: /tmp/webapps
+    networks:
+      - webnet
+
+  prod:
+    image: huggla/tomcat-alpine:9.0.20-epanet_2.00.12-swmm_5.1.013-20191112
+    ports:
+      - "80:8080"
+    environment:
+      VAR_WEBAPPS_DIR: /usr/local/tomcat/webapps
+    volumes:
+      - type: volume
+        source: webdir
+        target: /usr/local/tomcat/webapps
+    networks:
+      - webnet
+
+networks:
+  webnet:
+    driver: bridge
+
+volumes:
+  webdir:
